@@ -1,0 +1,749 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.4">
+  <style type="text/css">
+    body {background-color: #0d1015}
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #f30017; -webkit-text-stroke: #7fc6e0; background-color: #7fc6e0}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #f30017; -webkit-text-stroke: #7fc6e0; background-color: #7fc6e0; min-height: 16.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!doctype html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;meta charset="utf-8"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;meta name="apple-mobile-web-app-title" content="TDIF Crew"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;meta name="theme-color" content="#EDF1F4" media="(prefers-color-scheme: light)"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;meta name="theme-color" content="#0E141B" media="(prefers-color-scheme: dark)"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;title&gt;TDIF 2026 Crew&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1">&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</span></p>
+<p class="p1"><span class="s1">&lt;link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&amp;family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;style&gt;</span></p>
+<p class="p1"><span class="s1">/* Layout: one narrow reading column; sticky header with day tabs; sessions grouped under time-slot rails. */</span></p>
+<p class="p1"><span class="s1">:root {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--bg: #EDF1F4;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--logo: #064D65;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--surface: #FFFFFF;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--ink: #15202B;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--muted: #5A6875;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--line: #D5DDE4;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--accent: #2847D9;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--accent-soft: #E3E8FC;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--jam: #0E7C6B;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--jam-soft: #DDF2EE;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--now: #E09B00;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--now-soft: #FFF2D1;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--star: #E0A100;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--warn: #B4361E;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--font-display: "Barlow Semi Condensed", "Arial Narrow", "Segoe UI", system-ui, sans-serif;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--font-body: "Source Sans 3", -apple-system, "Segoe UI", system-ui, sans-serif;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--go: #15803D;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--go-soft: #DCF3E3;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">@media (prefers-color-scheme: dark) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>:root:not([data-theme="light"]) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>--logo: #8FD0E6; --bg: #0E141B; --surface: #17202A; --ink: #E5ECF2; --muted: #93A1AE; --line: #283442;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>--accent: #93A8FF; --accent-soft: #1F2A4F; --jam: #5FD1BD; --jam-soft: #133630;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>--now: #FFC53D; --now-soft: #3A2E10; --star: #FFC53D; --warn: #FF8A70; --go: #5ED68B; --go-soft: #133722;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>color-scheme: dark;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">:root[data-theme="dark"] {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--logo: #8FD0E6; --bg: #0E141B; --surface: #17202A; --ink: #E5ECF2; --muted: #93A1AE; --line: #283442;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--accent: #93A8FF; --accent-soft: #1F2A4F; --jam: #5FD1BD; --jam-soft: #133630;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>--now: #FFC53D; --now-soft: #3A2E10; --star: #FFC53D; --warn: #FF8A70; --go: #5ED68B; --go-soft: #133722;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>color-scheme: dark;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">* { box-sizing: border-box; }</span></p>
+<p class="p1"><span class="s1">body { margin: 0; }</span></p>
+<p class="p1"><span class="s1">body {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>background: var(--bg); color: var(--ink);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>font-family: var(--font-body); font-size: 17px; line-height: 1.5;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>-webkit-text-size-adjust: 100%;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">.wrap {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>max-width: 640px; margin: 0 auto;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>padding-left: max(16px, env(safe-area-inset-left, 0px));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>padding-right: max(16px, env(safe-area-inset-right, 0px));</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">header.top {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>position: sticky; top: 0; z-index: 10;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>background: color-mix(in srgb, var(--bg) 92%, transparent);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>border-bottom: 1px solid var(--line);</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">.top .wrap { padding-block: calc(8px + env(safe-area-inset-top, 0px)) 8px; display: grid; gap: 8px; }</span></p>
+<p class="p1"><span class="s1">.brand { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }</span></p>
+<p class="p1"><span class="s1">h1 {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; letter-spacing: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>margin: 0; line-height: 1.05;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">h1 span { color: var(--logo); }</span></p>
+<p class="p1"><span class="s1">.logo { display: flex; align-items: center; gap: 6px; }</span></p>
+<p class="p1"><span class="s1">.logo-mark { display: block; width: 66px; height: 23px; flex: none; background: var(--logo); -webkit-mask: url("data:image/webp;base64,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") top center / 66px 26px no-repeat; mask: url("data:image/webp;base64,UklGRkwOAABXRUJQVlA4WAoAAAAwAAAAywAATwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDhMXQwAAC/LwBMQR6egbSPH/Gnf/AEgQkCSQqzkMxGiEQIQAhOmk0CACAEiiV5UiRDiPqxt255GbibZXggnk2bCzMzMNEm5nTJz7TIzMzMz85SmzNy69Ia7W1iyLNn3z5ClsT3Oxu/XiP5DkCQ3brNlMbqzgHgAIPgBUEoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSALSxz5AJs5YfePpV9zz/7le/t3YxHoRBEIbCb/vf56/eff5BCycOaqIGIQAAAAAAAAAAAJJ8suA6xd2gBUV2yumO4ziO4ziO4ziO4ziO4ziO4ziO4ziO4ziO4ziO4ziO4ziO4ziO4ziO45xWpPSQR9/94qf/tbR7zGM+FyIIgiAIgiAIgkD4zGPtO3759KkLSkWLpt8hI5LEOeNgEyBNh2auhZOaARz7H2OMMcYYY4wxxhhjjDHGGGOMMcYYY4wxxhhjjDHGGGOMMcb+XWAa9/qc+1ypLgzCMAzDMAzDMAzDMAzDMAyCgPu+8Nu/u+fAcc0mSYl1HUnyvNkEkML7XtZa2LUXAY76zxdCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCMH/mmcad3ERxlaBhDMaGU27gnPe+dP9q5oMkgpruni8POxVHTxrLWwZqNAm0n3KMAzDMAzDMAzDdF86FK3zTONurumuLno6LfVveNuzm3rLBpsKEfM4or6OqpA1LFstxGK37LTO15GNiNrjvvfX88tMIx3CWLy2hyObHXm79p92nj9UPpQZMlVH90ba/ke9mr0zX/5yGsmdkPptP7yZ5Bky3NGHu5bzLfr/AFIt6rzvXdKb5ixqVCA1kab74f+dJ8frPQUZdYiZFKoipxj15LCgft4JDaS7IuXXzIB1S80YXddgI1rVGJ4skbr4+2KaBZJ6qyAIgiAIgiAIgiAIgnibsxb/er7v+77v+77v+77v+74vAilBgjWXhhqTqL/gO077VyhiaXa9dwfSDIr475GR7VR6/a1KpVKpVCqVSqVSqVQqlUplRxLEV6m4vTrJqAta5/L+8Gd8SSxlpefXN5H6i9i2nfgV03xSzaalhmmapmmapmmapmmapmlaj8ZVSWUnsMPMNOQMQtIdxNL1z248soPLZpKOFNu6yKgfsTWr7Xrbtm3btm3btm3btm3btm3btm3btm3btk9s1oQghBBCCCGEEEIIIdR6XCThGErS0EMMUrsZW8c1jP+RRTZvOlre/Vb9iK1Zf621LMuyLMuyLMuyLMuyLMuyLMuyLMuyLMtM75eZyTg6pQsXW6TVkkF73Mvju7T49tKxkmaJXWtpfS5xXd6ylTVSK+nvDRTGOhbdnHaceFxezhTSRNkjUMfTnwymgPUuk9TS8vptmpGTUFGTq00V+zi1U9oAaUe9jtOlpZ47SD1A89a5WoRo0i/Ri9O241ea8gepr/hPSZdCoceT8ubUWv5nCs0dpL67vaxzNY7oFJFuUo57J5i5U6S2Nb4bTXVy/b5QcceUN9/XlDtIPUDf2Rix0/6cxyJbO+XhRwNJbqHGYK5xwZcZtexmb1Ev1oN3SWGrnyfkDSL1xAUZYxzwrjdkMKE2TN3/dV8PCsfpWWfLd83NHahGGChz3/eZ73MuAiF420lxUZ6GE5kKcQvloOjMVMBbM59KGWK9aRiGYRiGYRiGYRiGYRiGYRiGYRiGjMN2E+jBXa+z7e+dW393f/z2i0/ef+2ZB267ehiNmz8YdOXtDzz92nuffPHNj+7vW3e2tnV4ctyulacuxPZOLfsMLhaLxWKxWCwWi8VisVgsFovFYrFYLBaLxZ6ke0BzJr1bDytvXrVw+qRxI4cM7N+nZ6NJk2ZDzMYeffoPHDxi7KRpC1ZtKh9+Cw+0se8soy7E9wDsq2q1Wq1Wq9VqtVqtVqvVarVarVar1Wq1Wq0eLy3eblT8cUgzpYRSraKpuZvEmKiipHFSlGjD3r/IRqt95ivMzCDbiwrsc84555xzzjnnnHPOOeec++fJU93iMf0Ka73MSghQ1zdl1fui7VG3qw3kN9aPmM45RZghobc+X6I73cLZvSOtFHspuQ65uUONDdqFW62MivojJt0IUnLtwa7358huLJNt/JvKk6o5uM0itJ4iu0hWN4PWs3N3k4zp1rmpOcO1P2hbjUA3R0XOQP1Rjc7fdn4vo96t4dQtMZtS+zVm7kD7qbbkt10/VIYD6tkzB16rDWhSO7XD1QVGHkG7SxF8c2wkTfpIzMjnO6LgpWQaI49/ak5BvV5p5esVMnaYdp8u+1qPw9ZAmSkHk7xBkuvHtpxikZTvOO53zbSN95v+XQbkDJIdu66LE3ZrvaczW3xtrjtW4f62mSRvkDyH4n+4l5GGovVyl3pHfChC+by5Bs2QuV0epqJ4QadUd7I/+94A6WtkZgfWObvgd5+D5Hicd7SRzvpb0xIXna8d1u5orO90QjPY4rqu67qu67qu67qu67qu67qu67qu69rdxj5PDvxsHUfTvXnsDwn9kzaoH51h/KdlvwGFQqFQKBQKhUKhUCgUCoVCoVAoFAqFQqEQzYh3i9NpKuzLDSnf1fMVNTGWFIWcbCA7f3bNHhL/SbyTnyPbTMrfhVHcNIGh93r+xEuT294/q+IoysmhWA7LogfjlSU6pbYzxR5ZsO/HkDgXaf9hZgyL/l9GN8Yfb50t5xfyrnihL6npZay17//34UaZEFUrzG0sacay0pfmD5ImQPzzrRqzb8TFLZz7HdeNku1WJ3J0p4yUxD7NTpF88g5tK0ztrLn/R11cjdjtXx/WJFmrkW32Fib1EldxPhuIPIPmOn0tK6yylMZf5zHpV+iz7v/dPl5ld9AhH0csY7aOU2U9yTuwu9UUfePRX3eJ2ETcb443DYJGLSu05s3+5yNoHhVJ84WHU9Iw/q72yENSulKl4u0/MoMS6xidpVZLuo6XbSCPDhKe/nOG2XDad0wPcdWQUcy7fjmjjzGyNRKnZnx+pAfJP3xcnP2YpwyLeDrqpN/1zKzeb0Q3ajTYD9NkTlH+4f7zfquZGEmwqLSdP8+92FOJ0loCifJHcu+xrZ36fFVinptWDXy+Vbm0ag718igHL6eQ4KrpUZG0WXtynUHN/n2RpZF/qCszWlOtLkX7Ez1r3phP9kaGqdFa9P7hKA6RW8h2UxloNzVJ3z33Ibsi1b+yrSf0ktrIMWSVD11jEr4+N5p2zGXEdkY6e/7zsYVIgDyHNiqrac7O764cQlNEH3MnryB97686Gf1+zrn37snjmiI95B20FVEprtUkdajGybpavn1wn94qk2HPRVwItB7c5atVg7rhl1yhZQaIWo7H/b/evnLDqAaCKAyYGvGUo7Vd3Q6P8YQwsZcel/7wv9YOL1JVUgq2SlDhrPOvXz9/+aqDxjUbNGY2OMs1d34CmZTIaL7ces7zPM/zPM/zPM/r6jo2dZy439hpCzYe5Vx6w92PvfTmux98/Mlnn3326cfVt1986OaLTto8f9LQXpYZmzCRdi1ke5KQNWshuxLI7Fwvye+23+JDyuVyuVwul8vlcvngg0elr5gqf0NlvFsNDQ2NPXr37T9gQP/ezQ0NlqXy2eXi2UwkH1Qul+OlXKUCwo1rD06Q/IBBuw1RQn5i/lG9X5QQQlLls2f3wRJlpCkl340bAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOzGaqwt1iBqxYbezxmqnci6pGqdaWkOTkRKs94UJ41GFGWTloMK76qlCNH6EBnf1UhRYkhKildEQONi1DKyLAqi1VpVTzXCGh+ixFZSaaJYMi9JsdblVpFKjZLGTBG0KNFJGoqbLrouS23fOrRU2lwqDVhdKpVmDN3cj5hLF1EYywcB6HHQGRvUJE7fvUsbZ2je9NTFBsHYfQuETFlikMa9zzisr7lsU6m0UKlu4djGVet7EgzdZxpdsGnjLIvMLm1c3AyQJfYpM4i5ahyIuWzmnPm0YYNzcLOachhMxuy9aXNpXa91/QiZdLKzgpKm1UtNYq1SwdSmjZtKe48dtk+ptHkwhp946sR+G0ubS3sPXTNq8SIKMnkRIfPGEBhLJ+utGAA=") top center / 66px 26px no-repeat; }</span></p>
+<p class="p1"><span class="s1">.brand { align-items: center; }</span></p>
+<p class="p1"><span class="s1">.place { font-size: 0.78rem; color: var(--muted); text-align: right; }</span></p>
+<p class="p1"><span class="s1">.tabs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }</span></p>
+<p class="p1"><span class="s1">.tab {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>font: inherit; font-size: 0.9rem; border: 1px solid var(--line); background: var(--surface); color: var(--ink);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>border-radius: 10px; padding: 7px 4px 6px; cursor: pointer; display: grid; line-height: 1.15;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">.tab b { font-family: var(--font-display); font-weight: 700; font-size: 1rem; }</span></p>
+<p class="p1"><span class="s1">.tab small { color: var(--muted); font-size: 0.75rem; }</span></p>
+<p class="p1"><span class="s1">.tab[aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }</span></p>
+<p class="p1"><span class="s1">.tab[aria-selected="true"] small { color: inherit; opacity: 0.75; }</span></p>
+<p class="p1"><span class="s1">.tab:focus-visible, button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }</span></p>
+<p class="p1"><span class="s1">.search {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>width: 100%; font: inherit; font-size: 16px; padding: 9px 12px; border-radius: 10px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>border: 1px solid var(--line); background: var(--surface); color: var(--ink);</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">main .wrap { padding-block: 14px calc(48px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 22px; }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">.nowcard {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>background: var(--now-soft); border: 1px solid color-mix(in srgb, var(--now) 45%, transparent);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>border-radius: 14px; padding: 12px 14px; display: grid; gap: 6px;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">.nowcard .eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); opacity: 0.75; }</span></p>
+<p class="p1"><span class="s1">.nowcard p { margin: 0; }</span></p>
+<p class="p1"><span class="s1">.nowcard .big { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; line-height: 1.25; }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">.slot { display: grid; gap: 8px; }</span></p>
+<p class="p1"><span class="s1">.slot-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }</span></p>
+<p class="p1"><span class="s1">.slot-time {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; margin: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>font-variant-numeric: tabular-nums;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">.slot-meta { color: var(--muted); font-size: 0.85rem; }</span></p>
+<p class="p1"><span class="s1">.pill { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; }</span></p>
+<p class="p1"><span class="s1">.pill.now { background: var(--now); color: #1B1300; }</span></p>
+<p class="p1"><span class="s1">.pill.done { background: var(--line); color: var(--muted); }</span></p>
+<p class="p1"><span class="s1">.list { display: grid; gap: 8px; }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }</span></p>
+<p class="p1"><span class="s1">.card.kind-jam { border-left: 4px solid var(--jam); }</span></p>
+<p class="p1"><span class="s1">.card.kind-class { border-left: 4px solid var(--accent); }</span></p>
+<p class="p1"><span class="s1">.card.kind-performance { border-left: 4px solid var(--now); }</span></p>
+<p class="p1"><span class="s1">.card.quiet { background: transparent; border-style: dashed; }</span></p>
+<p class="p1"><span class="s1">.row { display: grid; grid-template-columns: 1fr auto; align-items: start; }</span></p>
+<p class="p1"><span class="s1">.opener {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>font: inherit; color: inherit; text-align: left; background: none; border: 0; padding: 12px 6px 12px 14px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>cursor: pointer; display: grid; gap: 2px; min-width: 0;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">.opener[disabled] { cursor: default; }</span></p>
+<p class="p1"><span class="s1">.who { font-weight: 700; font-size: 1rem; }</span></p>
+<p class="p1"><span class="s1">.ctitle { font-family: var(--font-display); font-weight: 700; font-size: 1.12rem; line-height: 1.25; text-wrap: balance; }</span></p>
+<p class="p1"><span class="s1">.kind-jam .ctitle, .kind-break .ctitle, .kind-logistics .ctitle, .kind-circle .ctitle, .kind-performance .ctitle { font-size: 1.02rem; }</span></p>
+<p class="p1"><span class="s1">.where { color: var(--muted); font-size: 0.86rem; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }</span></p>
+<p class="p1"><span class="s1">.where .tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 1px 6px; border-radius: 5px; background: var(--accent-soft); color: var(--accent); }</span></p>
+<p class="p1"><span class="s1">.kind-jam .where .tag { background: var(--jam-soft); color: var(--jam); }</span></p>
+<p class="p1"><span class="s1">.more { color: var(--accent); font-size: 0.85rem; font-weight: 700; margin-top: 4px; }</span></p>
+<p class="p1"><span class="s1">.kind-jam .more { color: var(--jam); }</span></p>
+<p class="p1"><span class="s1">.starbtn {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>font: inherit; background: none; border: 0; cursor: pointer; color: var(--muted);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>width: 48px; height: 48px; display: grid; place-items: center; margin: 2px 2px 0 0; border-radius: 10px;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">.starbtn svg { width: 24px; height: 24px; }</span></p>
+<p class="p1"><span class="s1">.starbtn[aria-pressed="true"] { color: var(--star); }</span></p>
+<p class="p1"><span class="s1">.detail { padding: 0 16px 16px 14px; display: grid; gap: 10px; border-top: 1px solid var(--line); padding-top: 12px; }</span></p>
+<p class="p1"><span class="s1">.detail p { margin: 0; max-width: 62ch; white-space: pre-line; }</span></p>
+<p class="p1"><span class="s1">.detail h4 { margin: 6px 0 0; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }</span></p>
+<p class="p1"><span class="s1">.detail .bio { color: var(--muted); font-size: 0.95rem; }</span></p>
+<p class="p1"><span class="s1">.detail a { color: var(--accent); font-weight: 700; }</span></p>
+<p class="p1"><span class="s1">.linkbtn { font: inherit; color: var(--jam); font-weight: 700; background: none; border: 0; padding: 0; cursor: pointer; text-align: left; text-decoration: underline; }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">details.agree { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }</span></p>
+<p class="p1"><span class="s1">details.agree summary { cursor: pointer; padding: 12px 14px; font-weight: 700; list-style-position: inside; }</span></p>
+<p class="p1"><span class="s1">details.agree ol { margin: 0; padding: 0 18px 16px 34px; display: grid; gap: 10px; }</span></p>
+<p class="p1"><span class="s1">details.agree li { max-width: 62ch; }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">.syncline { font-size: 0.78rem; color: var(--muted); display: flex; align-items: center; gap: 6px; white-space: nowrap; margin-left: auto; }</span></p>
+<p class="p1"><span class="s1">.syncline::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--line); flex: none; }</span></p>
+<p class="p1"><span class="s1">.syncline.is-live::before { background: var(--jam); }</span></p>
+<p class="p1"><span class="s1">.empty { color: var(--muted); text-align: center; padding: 24px 8px; }</span></p>
+<p class="p1"><span class="s1">.conflict { color: var(--warn); font-size: 0.85rem; font-weight: 700; }</span></p>
+<p class="p1"><span class="s1">.foot { color: var(--muted); font-size: 0.8rem; text-align: center; }</span></p>
+<p class="p1"><span class="s1">@media (prefers-reduced-motion: no-preference) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>.detail { animation: open .18s ease-out; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>@keyframes open { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">.markbtn {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>font: inherit; background: none; border: 0; cursor: pointer; color: var(--muted);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>width: 62px; min-height: 52px; display: grid; justify-items: center; align-content: center; gap: 1px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>margin: 4px 4px 0 0; border-radius: 10px; padding: 4px 0;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">.markbtn svg { width: 24px; height: 24px; }</span></p>
+<p class="p1"><span class="s1">.markbtn small { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }</span></p>
+<p class="p1"><span class="s1">.markbtn[data-mark="1"] { color: var(--star); }</span></p>
+<p class="p1"><span class="s1">.markbtn[data-mark="2"] { color: var(--go); background: var(--go-soft); }</span></p>
+<p class="p1"><span class="s1">.crew { display: flex; flex-wrap: wrap; gap: 4px 12px; padding: 0 14px 11px; font-size: 0.88rem; line-height: 1.35; }</span></p>
+<p class="p1"><span class="s1">.crew b { font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase; margin-right: 4px; }</span></p>
+<p class="p1"><span class="s1">.crew .go b { color: var(--go); }</span></p>
+<p class="p1"><span class="s1">.crew .maybe b { color: var(--star); }</span></p>
+<p class="p1"><span class="s1">.crew span { min-width: 0; }</span></p>
+<p class="p1"><span class="s1">.mebar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 0.92rem; color: var(--muted); }</span></p>
+<p class="p1"><span class="s1">.mebar b { color: var(--ink); }</span></p>
+<p class="p1"><span class="s1">.mebar button, .namecard button {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>font: inherit; font-weight: 700; color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">.namecard { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 10px; }</span></p>
+<p class="p1"><span class="s1">.namecard p { margin: 0; }</span></p>
+<p class="p1"><span class="s1">.namecard .big { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; }</span></p>
+<p class="p1"><span class="s1">.namecard form { display: flex; gap: 8px; }</span></p>
+<p class="p1"><span class="s1">.namecard input { flex: 1; min-width: 0; font: inherit; font-size: 16px; padding: 9px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }</span></p>
+<p class="p1"><span class="s1">.namecard .save { font: inherit; font-weight: 700; padding: 9px 16px; border-radius: 10px; border: 0; background: var(--ink); color: var(--bg); cursor: pointer; text-decoration: none; }</span></p>
+<p class="p1"><span class="s1">.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.85rem; color: var(--muted); }</span></p>
+<p class="p1"><span class="s1">.legend span { display: inline-flex; align-items: center; gap: 4px; }</span></p>
+<p class="p1"><span class="s1">.legend svg { width: 16px; height: 16px; }</span></p>
+<p class="p1"><span class="s1">.legend .l1 { color: var(--star); } .legend .l2 { color: var(--go); }</span></p>
+<p class="p1"><span class="s1">.roster { display: flex; flex-wrap: wrap; gap: 6px; }</span></p>
+<p class="p1"><span class="s1">.roster span { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: 0.86rem; }</span></p>
+<p class="p1"><span class="s1">.roster small { color: var(--muted); }</span></p>
+<p class="p1"><span class="s1">.note { background: var(--accent-soft); border-radius: 12px; padding: 10px 14px; font-size: 0.92rem; }</span></p>
+<p class="p1"><span class="s1">.note p { margin: 0; }</span></p>
+<p class="p1"><span class="s1">.syncline.is-live::before { background: var(--go); }</span></p>
+<p class="p1"><span class="s1">&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;header class="top"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="wrap"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="brand"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;h1 class="logo"&gt;&lt;span class="logo-mark" role="img" aria-label="TDIF"&gt;&lt;/span&gt;&lt;span&gt;2026&lt;/span&gt;&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="syncline" id="syncline" role="status"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="tabs" role="tablist" aria-label="Day"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button class="tab" role="tab" id="tab-thu" data-day="thu"&gt;&lt;b&gt;Thu&lt;/b&gt;&lt;small&gt;Oct 15&lt;/small&gt;&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button class="tab" role="tab" id="tab-fri" data-day="fri"&gt;&lt;b&gt;Fri&lt;/b&gt;&lt;small&gt;Oct 16&lt;/small&gt;&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button class="tab" role="tab" id="tab-sat" data-day="sat"&gt;&lt;b&gt;Sat&lt;/b&gt;&lt;small&gt;Oct 17&lt;/small&gt;&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button class="tab" role="tab" id="tab-picks" data-day="picks"&gt;&lt;b&gt;Mine&lt;/b&gt;&lt;small id="pickcount"&gt;0 marked&lt;/small&gt;&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button class="tab" role="tab" id="tab-crew" data-day="crew"&gt;&lt;b&gt;Crew&lt;/b&gt;&lt;small id="crewcount"&gt;—&lt;/small&gt;&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;input class="search" id="q" type="search" placeholder="Search teachers, classes, words…" autocomplete="off" aria-label="Search the schedule"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/header&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;main&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="wrap" id="view"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/main&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;script&gt;</span></p>
+<p class="p1"><span class="s1">const SHEET_ID = "15NiJhOGEeBF8iTkYaiveX-CUP5SJ0w5YWuzn9NJ4S-w";</span></p>
+<p class="p1"><span class="s1">const SOURCES = [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&amp;headers=0&amp;gid=0`,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>`https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&amp;gid=0`</span></p>
+<p class="p1"><span class="s1">];</span></p>
+<p class="p1"><span class="s1">const BAKED = {"classes": [{"id": "c9fri", "key": "wells", "day": "fri", "start": "09:00", "room": "Jowers B178", "who": "Scott Wells", "title": "The Landscape of Touch", "desc": ["Contact skills and thrills, pathways from earth to sky. We’ll explore my favorite contact exercises and current curiosities, developed or discovered over decades of investigation and indulgence."], "bio": ["Scott Wells has been practicing contact improv in 1981, has an MFA in dance, and directs an award winning dance company in San Francisco. He has created works for skateboarders, for boxers and choreographed West Side Story for Sonoma State University. Scott has twice received the Isadora Duncan (San Francisco’s most prestigious dance award) for Outstanding Choreography. He has been teaching in Europe for the last 30 years at festivals in Moscow, Barcelona, Budapest, Berlin, Vienna, Zagreb, Bucharest, and Ankara to name a few. His current research passions are Eyebody practice, moving from the organs and contact improvisation."]}, {"id": "d9fri", "key": "dewitt", "day": "fri", "start": "09:00", "room": "Jowers B175", "who": "Veronica DeWitt", "title": "DanceAbility: Space, Skin, Weight", "desc": ["DanceAbility is an improvisational dance class for people of all abilities, designed to cultivate connection, curiosity, and embodied awareness through movement exploration. This class welcomes diverse bodies, experiences, and access needs while introducing or reinforcing the fundamentals of weight sharing. Participants investigate gradients of touch, support, and shared balance through space, skin, and weight, discovering how contact can pass through the skin to reveal structure and mutual support. Through guided improvisation exercises that share history with some of CI’s most notable pioneers, dancers build trust, communication, confidence while expanding their relationship to touch in a collaborative and supportive community atmosphere."], "bio": ["Veronica DeWitt is a professional dancer, choreographer, aerialist, and Master Teacher of DanceAbility based in San Marcos. Raised in Sixes, OR and central Texas, she earned a BA in Dance from University of Oregon in 2003. She has performed with Body Shift, KDH Dance Company (+more) and has<span class="Apple-converted-space">  </span>presented at festivals including NDEO.<span class="Apple-converted-space">  </span>Currently, V teaches at Austin Community College and guest teaches wherever invited!"]}, {"id": "e9fri", "key": "lass", "day": "fri", "start": "09:00", "room": "Jowers 170", "who": "Sarah Lass", "title": "Dancing With", "desc": ["Dancing With is an improvisation class embedded in a Western postmodern dance lineage. Drawing on experiential anatomy and ecological psychology, dancers investigate how attention reorganizes movement and relation in real time. Solo scores focus on attending to the body’s “soft places”—intimate, vulnerable, or overlooked areas—allowing sensation, desire, and peripheral awareness to redirect emerging form. Duet and ensemble scores explore coordination with space, sound, and others without merging: moving in close relation while maintaining distinction, agency, and difference. Together, these practices investigate how subtle sensation and desire might disrupt dominant understandings of control, virtuosity, certainty, and power in dance."], "bio": ["Sarah Lass is a transdisciplinary dance artist whose work moves between choreography and writing. Grounded in improvisation as both technique and philosophical stance, she explores embodiment, perception, temporality, and relation, asking how movement and acts of attending might interrupt dominant Western logics of mastery and certainty. She has collaborated with artists including Bebe Miller, Angie Hauser, Chris Aiken, and others. Her writing appears in The Maine Review, Conversations Across the Field of Dance Studies, and others. Her choreography has been supported by residencies at Ucross, Basin, Arts, and other venues. She holds an MFA in Dance from Smith College."]}, {"id": "f9fri", "key": "cartwright", "day": "fri", "start": "09:00", "room": "Gym 219", "who": "John T. Cartwright", "title": "Flocking Sensation", "desc": ["In this class we’ll explore group improvisation scores to build kinesthetic awareness for ensemble practices in performance and composition. Building on the foundations of Mary Overlie’s and Anne Bogart’s Viewpoints, students will have the opportunity to expand their experience of moving, making, and performing in a group. We will investigate how our senses aid us, what it means to respond as an individual within a group, the possibilities of moving with our voice, and who we become when we focus on the collective. Contact is not mandatory; students may engage in contact in certain elements of the class with consent."], "bio": ["John T. Cartwright is multi-disciplinary intermedia dance artist and educator. He holds an M.F.A. in Dance with a Graduate Interdisciplinary Specialization in Fine Arts from The Ohio State University and a B.S. in Dance – Arts Administration from Butler University. His professional performance credits include the Louisville Ballet, Thodos Dance Chicago, and Chicago Repertory Ballet. His professional teaching credits include Hubbard Street Dance Chicago and The Ohio State University. Currently, John is the Dance Composition Faculty and the Chair of the Dance Program at the Kentucky Governor’s School for the Arts, and a Lecturer in Dance at Texas A&amp;M University."]}, {"id": "g9fri", "key": "ellis", "day": "fri", "start": "09:00", "room": "Gym 221", "who": "Erin Ellis", "title": "The Creative Well", "desc": ["Exploring the connectivity between two seemingly unrelated concepts in order to derive meaning when inspiration feels arid. By utilizing chance, lists, and storytelling framework, we will work toward creating a malleable score that will enable you to draw from your own unique life experience and interests, regardless of where you are within your creative journey. Meaning-making becomes a tool for creation, but what exactly is meaning? Do we need it? Do we desire it?"], "bio": ["Erin Ellis, M.F.A. is a dance artist, choreographer, and educator based in Austin, Texas. She is adjunct faculty in the Dance Department at Austin Community College and a founding collaborator with Allysen Hooks Projects, an Austin-based dance company. Her research and creative practice explores archetypal symbolism, embodied storytelling, and somatic entryways into movement, with a focus on performance as a site of openness---where ideas and questions emerge that may not resolve, but invite audiences to leave altered or newly attuned."]}, {"id": "c10fri", "key": "barnard", "day": "fri", "start": "11:15", "room": "Jowers B178", "who": "Rai Barnard", "title": "Attention, Attunement, &amp; Play", "desc": ["Let’s investigate our capacity for simultaneously holding internal and external awareness! We’ll use somatic improvisation and spontaneous composition tools to explore collective attunement- finding opportunities to build trust, take risks, and discover play.", "Our practice will begin with a guided warm-up, drawing on Bartenieff fundamentals and establishing individual internal awareness of sensation through breath and weight. Solo practices with somatic cueing will help us identify imminent personal impulses for particular pathways, shapes, and rhythms. Shifting our attention beyond our own bodies, we’ll utilize constraints on space, timing, and movement vocabulary (borrowing ideas from Ensemble Thinking) to find a sense of collective attunement. We’ll experiment with variations on these scores, identifying constraints that support sustained attunement while creating opportunity for delightful risk.", "How do we honor both individual impulse and remain committed to collective tasks? How do our responses to constraint affect our movement choices and ensemble relationships? By attuning our attention and leaning into constraint, we’ll discover the joys and challenges of ensemble improvisation, making room for play along the way!"], "bio": ["Rai Barnard (they/them) is a queer Dallas-based dance artist and arts organizer invested in crafting community-oriented offerings.", "They hold a B.A. in Dance and a B.S. in Biology from UT Dallas, informing their creative and analytical approach to dance practices. Since 2024, Rai has organized and facilitated Collective Reflection, a monthly workshop series offering somatic-centered, guided improvisation experiences for all levels. Their collaborative performance and choreographic work includes projects with Jennifer Mabus, Christie Bondade, and Lauren Kravitz. Rai serves on the Agora Artists Advisory Committee - producing programming and supporting professional development of DFW dance artists."]}, {"id": "d10fri", "key": "fuchs", "day": "fri", "start": "11:15", "room": "Jowers B175", "who": "Jordan Fuchs", "title": "Contact Improvisation - Accompanying", "desc": ["Working in duets we will explore strategies for accompanying a partner through touch and proximity in order to expand our mobility, articulation and responsiveness to our environment before shifting to explore such strategies in larger ensembles."], "bio": ["Jordan Fuchs is Professor and Head of the Dance Division at Texas Woman’s University and the founder of the Texas Dance Improvisation Festival. His choreography for stage, screens, museums and outdoor spaces is grounded in improvisational practice, specifically the bias towards disorientation, sensation and process of contact improvisation, a movement form he has been practicing for more than 30 years. His choreography has been presented across the US and internationally in Europe, Asia and Australia. He holds a BA in Religion from Oberlin College and an MFA in Choreography from Ohio State University. www.jordanfuchs.org, @jfchs11"]}, {"id": "e10fri", "key": "lima/mockli", "day": "fri", "start": "11:15", "room": "Jowers 170", "who": "Bárbara Lima &amp; Shannon Mockli", "title": "Unrefined", "desc": ["Co-facilitated by Bárbara Lima and Shannon Mockli, this workshop shares movement structures developed through (un)refined, a duet exploring identity and relationality through improvisation. Emphasizing process, transformation, and relational exchange, participants will work in partnership using practices of entering, conversation, weight sharing, and interruption to create their own short improvisational studies. Through sensing, listening, and responsiveness, dancers will investigate how perception and movement evolve in relationship with self, others, and space. The workshop asks: How do we meet ourselves and one another within relationships that are continually unfolding?"], "bio": ["Shannon Mockli is an Associate Professor at the University of Oregon with an emphasis in choreography and performance. Notable presentations include the Texas Dance Improvisation Festival, the World Dance Alliance Global Summit in Newfoundland, Physical Theatre Lab in Slovenia, and the Festival Internacional Danza al Borde in Tijuana, Mexico. Her dance film, “Fluctuating Frequencies” was one of three highlighted at the World Dance Alliance Americas Assembly at the Universidad de las Américas Puebla 2016. She has the honor of performing with Leah Glenn Dance Theatre and Company Movimiento directed by Cynthia Gutierrez. Mockli is a recipient of the Herman Award for Specialized Pedagogy from the University of Oregon and is certified to teach in the DanceAbility® Method."]}, {"id": "g10fri", "key": "lain", "day": "fri", "start": "11:15", "room": "Gym 221", "who": "Katherine Lain", "title": "Fluid Dynamics", "desc": ["In this Contact Improvisation class we will use spiraling forms naturally occurring in the body and nature to cultivate support, efficiency, and ease in our dancing. Drawing inspiration from our fluid system, the sea, and qualities of water we will explore tone, weight sharing, and listening touch. Principles of fluid dynamics will help us find sustainability, flowing kinetic energy, and suppleness when meeting the earth or another's body. Solo explorations, guided partner exercises, open scores, and witnessing will structure our time together. All levels of experience with CI are welcome."], "bio": ["Katherine Lain is a movement improviser, dance facilitator, writer, and bodyworker living between Austin, TX and Athens, GR. She is interested in improvisation as an ensemble art-making process — listening together to what emerges from the present moment. Katherine draws inspiration from observing nature and animals, caring for small humans, studying developmental movement patterns, swimming in wild places, and a decade of massage therapy practice. She has organized and taught at Austin’s weekly CI jam since 2022 and presented original work at M54 (Athens), Jardin d'Alice (France), and the Austin Dance Festival. Katherine is currently pursuing a Masters in Counseling Psychology in Athens and taking many naps by the sea."]}, {"id": "c12fri", "key": "wells", "day": "fri", "start": "15:00", "room": "Jowers B178", "who": "Scott Wells", "title": "Scores, Improv and the Poetics of Presence", "desc": ["A playful and focused approach to scores. Includes: movement sourcing, tuning scores, ensemble states, instant composition. We start with sensation and spatial explorations to drop into our own movement. Let you body show you how to dance. Composition as mediation; as the art or bodies in space. We will explore the intangibles (curiosity, vulnerability, commitment, presence), and with the spirit of exploration we will learn as much by watching as performing.\nSourcing–connecting with your body, impulses + spontaneity\nEnsemble states–tuning exercises, composition and non-composition,\nMovement as Art.\nScores–the way in, Aesthetics–how we watch."], "bio": ["Scott Wells has been practicing contact improv in 1981, has an MFA in dance, and directs an award winning dance company in San Francisco. He has created works for skateboarders, for boxers and choreographed West Side Story for Sonoma State University. Scott has twice received the Isadora Duncan (San Francisco’s most prestigious dance award) for Outstanding Choreography. He has been teaching in Europe for the last 30 years at festivals in Moscow, Barcelona, Budapest, Berlin, Vienna, Zagreb, Bucharest, and Ankara to name a few. His current research passions are Eyebody practice, moving from the organs and contact improvisation."]}, {"id": "d12fri", "key": "smith", "day": "fri", "start": "15:00", "room": "Jowers B175", "who": "Wayne Smith", "title": "Get Set…Action", "desc": ["This workshop will utilize some of the principles of Action Theatre, a body centered form of physical theatre that uses open improvisation, physical tasks, and sensory prompts as a means of generating scores. Class structures, approaches, and forms will vary based on how participants respond to material and interact with each other. The purpose is to explore embodied improvisation and to push the boundaries of a performer’s presence. Focus will be on movement, spontaneity, and sensory experience, and may include working with narrative. This class is great for all levels of dancers."], "bio": ["Wayne is a native of Memphis, TN, and a longtime dance professor, plus an alum at the University of Memphis. He holds an MFA degree from the Ohio State University, and a BFA in Theatre/Dance (minor Mathematics) from Memphis. His areas of expertise are in dance improvisation, experimental dance theatre research, mindful movement practices, and modern and jazz dance techniques. Wayne sometimes does community outreach under the auspices of his own company SmithWorks, as well as through Playback Memphis (EveryStory), an improvisational audience-interactive theatre company. He also is a teaching artist with Company d, a dance performance company in Memphis for dancers with Downs Syndrome. Additionally, Wayne is on the advisory board committee for TDIF since 2013."]}, {"id": "e12fri", "key": "martin", "day": "fri", "start": "15:00", "room": "Jowers 170", "who": "Shayla “Lashay” Martin", "title": "Street &amp; Club Freestyle", "desc": ["Street &amp; Club Freestyle explores improvisation through the foundations of groove, musicality, and movement exploration rooted in Street and Club dance culture. Dancers will build tools for freestyle by developing rhythm awareness, texture, dynamics, and personal expression while learning how to respond authentically to music in real time. This class emphasizes both technique and creative freedom, helping movers strengthen their improvisational instincts while deepening their understanding of how freestyle functions within social and cultural dance spaces."], "bio": ["Shayla “Lashay” Martin is a Texas-based multidisciplinary artist, dancer, and educator trained in Contemporary, Jazz Technique, Hip Hop Foundation, and Street/Club styles including House, Vogue, and Waacking. She is the founder of Texas’s first Waacking-focused group and is affiliated with World of Dance and BgirlCity. Lashay has performed at venues including the Hobby Center, Wortham Center, and Miller Outdoor Theatre, and has taught at universities including Rice University, UT Austin, Texas A&amp;M, and Sam Houston State University. Her work centers on honoring the cultural roots of movement while fostering artistic growth and community."]}, {"id": "f12fri", "key": "sharma", "day": "fri", "start": "15:00", "room": "Gym 219", "who": "Sanchita Sharma", "title": "Attentive Motion", "desc": ["This class views attention as the primary resource, tool, and impulse to generate, trace, and organize bodily movement. In this improvisational practice, we tune into presence, somatic memory, and situatedness as we open ourselves towards the relational and social aspects of the world that we move through, embody, and inhabit. We build upon this relational and embodied knowledge and work to enhance spinal articulation and mobility, reconnect with our breath, and ground our bodies."], "bio": ["Sanchita is a New Delhi-born, Austin-based performing artist, choreographer, and dance scholar with a PhD in Culture and Performance from UCLA. Sharma’s research interests include dissent and the dancing body, migration and belonging, and somatic attention and improvisational dance practices. She is an Adjunct Associate Professor of Dance at Austin Community College, Development Advisor for Future Front Texas and Chair for the Dance Studies Association’s Working Group, Practice-as-Research. Her dances have been presented at ARCOS Presents Long-Form, Austin Dance Festival, Preheat Film Festival, Keshet Center for the Arts, Seoul International Short Film Festival, Gati Dance Forum, and Maya Dance Theatre."]}, {"id": "h12fri", "key": "gamborino", "day": "fri", "start": "15:00", "room": "Outside · meet at registration table", "who": "Rebeca Gamborino", "title": "Placemaking: Ecofeminist Approaches to Dancemaking", "desc": ["Improvisation workshop exploring body, space, and narrative through ecofeminist approaches. Rooted in placemaking, participants investigate how bodies shape— and are shaped by—environments. Three practices guide the class: Topography of the Body (trace contours to generate spatial relationships), Make a Pattern, Break a Pattern (build and disrupt motifs as metaphors for harm, resistance, transformation), and Movement Talks (free movement paired with stream-of-consciousness speech to produce embodied narrative). Participants leave with tools for embodied storytelling, site-responsive improvisation, and activist practice that foregrounds our role in shaping places."], "bio": ["Rebeca Gamborino is an interdisciplinary artist whose movement projects arise from her perspective as a woman, immigrant, Latina, and mother. This lived experience lies at the heart of her pedagogy and choreographic work, where she uses dance-making as a form of activism. She has taught dance throughout Texas for the past twenty years and has showcased her work on stage and screen both nationally and internationally. She earned her MFA from Texas Woman's University in 2023. Recently, she and her partner moved from Denton to McAllen with their son to join the Department of Dance at the University of Texas Rio Grande Valley as an Assistant Professor of Dance and director of the Dance Ensemble."]}, {"id": "c19sat", "key": "wells", "day": "sat", "start": "11:15", "room": "Jowers B178", "who": "Scott Wells", "title": "Zero to Flying", "desc": ["Contact improv skills and principles/ flying maneuvers / fluid acrobatics We start with body awareness and connection with gravity to find satisfying contact dances. We will work with physics and somatics to practice lifts and flying.", "I call it Zero to Flying to let you know there will be some flying action fun. I call it Zero to give me the leeway to adapt to the needs and wishes of the group. Zero also refers to researching deep contact , somatic and cellular touch.\nAerial aspects of contact improvisation: flying, catching, landing, lifting and fluid acrobatics. For the acrobatics. Everyone will work at their own level and will learn best by building group safety and trust. We will practice integrating the flying and acrobatics into the contact flow.\n(I aim to connect the work to somatic knowledge. For example, Jumping ≠ Flying because jumping is a muscular action, whereas flying is in the bones and is affected greatly by emotions and attitude.)"], "bio": ["Scott Wells has been practicing contact improv in 1981, has an MFA in dance, and directs an award winning dance company in San Francisco. He has created works for skateboarders, for boxers and choreographed West Side Story for Sonoma State University. Scott has twice received the Isadora Duncan (San Francisco’s most prestigious dance award) for Outstanding Choreography. He has been teaching in Europe for the last 30 years at festivals in Moscow, Barcelona, Budapest, Berlin, Vienna, Zagreb, Bucharest, and Ankara to name a few. His current research passions are Eyebody practice, moving from the organs and contact improvisation."]}, {"id": "d19sat", "key": "bascom", "day": "sat", "start": "11:15", "room": "Jowers B175", "who": "Megan Bascom", "title": "Good Conversation - A Physical Dialogue", "desc": ["What makes a good conversation - feeling heard, understood, and seen? This session offers a space to explore this question through movement, evaluating outcomes from a choreographic lens. Basic scores are offered to clarify communication fundamentals and then layered to represent complex and dynamic realities within human engagement. Dancers will explore reflexivity versus calculated response, sensing how time can alter engagements and intention. Participants will generate material, witness, and refine choices, translating emergent interactions into choreographic strategies that support process, authorship, and collaboration. Attention to proximity, breath, and touch—where nuance, timing, detail, and closeness converge—deepens a shared, unfolding awareness between bodies."], "bio": ["Megan Bascom is a choreographer, performer, somatic practitioner, and faculty member at Wichita State University. Her work centers on connection—between bodies, contexts, and lived experience—through collaborative, relationship-driven practices. Her work invites explorations of human interaction through physical dialogue and embodied awareness. She spent fourteen years in New York City, teaching, sharing projects through Megan Bascom &amp; Dancers, and working as an independent artist. Her choreography and teaching have been shared across national and international communities, cultivating spaces for curiosity, empathy, and play. Megan holds a BA from the University of South Florida and an MFA from the University of Michigan."]}, {"id": "e19sat", "key": "big rig dance collective", "day": "sat", "start": "11:15", "room": "Jowers 170", "who": "Big Rig Dance Collective", "title": "Four Phases", "desc": ["From the Movement Fundamentals curriculum by Jane Hawley, the Four Phases practice is patterned around the infinity concept: layered within each phase is the whole. Through prompts and reflective questions, the class will move through the phases of preparation, moving, dancing, and witnessing. Paper and writing/drawing materials will be available for reflection."], "bio": ["Big Rig Dance Collective Co-Directors: Crysta Caulkins-Clouse, Whitney Geldon, and Lily Sloan", "Big Rig Dance Collective is directed by Crysta Caulkins-Clouse, Whitney Geldon, Amanda Jackson, and Lily Sloan, who are certified Movement Fundamentals Artists. In our creative process, we value what each individual brings to the group, and that is often the impetus for our work. Whether our collaborations lead us to light-hearted theatrical movement or raw energy and explosive physicality, we always start making dance by looking to what drives us in the here and now. Our methods for creating often include improvisation, set choreography, and collaborations with other artists."]}, {"id": "f19sat", "key": "davis/totzke", "day": "sat", "start": "11:15", "room": "Gym 219", "who": "Scott Davis &amp; Tamin Totzke", "title": "Being With", "desc": ["Being With introduces approaches to Contact Improvisation and ensemble improvisation that foster personal relationships among the dancers and invite a sense of non-linear story for the viewer. Working with proximity, contact, and how we use our gaze and eye contact, Totzke and Davis will share tools that add complexity to your dances and generate curiosity in your viewers."], "bio": ["Tamin Totzke and Scott Davis have been practicing, performing, and teaching dance improvisation since the early 2000s. They are founding members of AVID, a Seattle-based dance collective committed to weaving their dance practice into life beyond the studio. AVID researches, teaches, and performs ensemble improvisation with a focus on softening the distinction between the practice of improvisation in a studio without viewers and its performance."]}, {"id": "g19sat", "key": "dodini", "day": "sat", "start": "11:15", "room": "Gym 221", "who": "Meg Dodini", "title": "Fountains of Expressive Flow", "desc": ["This class investigates improvisation as a practice of embodied perception, responsiveness, and creative agency. Through guided movement explorations, sensory awareness, and compositional inquiry, students practice accessing their individual logic of sensation, movement, and creation within the dynamic context of the collective.", "We engage inner resources such as intuition, perception, action, and attention, cultivating both specificity and openness in our dancing. Emphasis is placed on developing precision, range, softness, rigor, and responsiveness as expressive tools within improvisational practice.", "A central focus of the course is the spine as a primary site of movement initiation, organization, sensation, and expression. We explore the spine as both structural and imaginative material — a channel through which internal experience and external environment continually inform one another. Through this work, students expand their physical vocabulary, deepen their relationship to improvisation, and strengthen their capacity for presence, choice-making, and embodied communication.<span class="Apple-converted-space">  </span>NOTE*: I was taught this pedagogy by a grad school mentor of mine, Sigal Zouk, who was a member of Batsheva Dance Company between 1994 and 1999."], "bio": ["Meg Dodini is a dancer and artist committed to making dance accessible to all. She holds a BFA in Dance Education from Brigham Young University and an MFA in Dance Performance from Hollins University. After three years performing in Europe, she returned to the U.S. with over a decade of professional experience across contemporary companies in Utah, New York, and Norway, including Odyssey Dance Theatre, Carte Blanche, and ImproLaB.", "Meg has performed works by renowned choreographers such as Ohad Naharin, Martha Graham, and José Limón, and her own work has been presented internationally at festivals in Reykjavik, Oslo, Plovdiv, and Barcelona. A recipient of multiple grants and residencies in Norway, she is also an established dance filmmaker whose work has screened globally.", "She has taught at Cornell University and the Oslo National Academy of the Arts, and is currently on faculty at Dallas College. Her research explores ageism and ableism in dance, the body as a site of memory, and movement as a vehicle for expressing generational trauma."]}, {"id": "c21sat", "key": "rabbers", "day": "sat", "start": "15:00", "room": "Jowers B178", "who": "Carolyn Pampalone Rabbers", "title": "Falling Horizontally", "desc": ["Improvisational based exploration of falling through space, with support of the Countertechnique Toolbox. This is done through postural awareness, spatial trajectories, and understanding space through Laban theory."], "bio": ["Carolyn Pampalone Rabbers is an Instructional Assistant Professor in Dance at Texas A&amp;M and the Executive Artistic Director of CPR Dance: Inhale Movement. She holds an MFA from the University of the Arts and a BFA as Presidential Scholar from Western Michigan University. Carolyn has performed nationally and internationally with companies including Wellspring/Cori Terry &amp; Dancers, Diavolo, Royal and Celebrity Cruises, Clairobscur, and LACDC, in works by Sidra Bell, Seyong Kim, Erik Hawkins, Yvonne Rainer, Loïe Fuller, Antony Tudor, and Gerald Arpino. Her choreography has been featured nationally and internationally. She choreographed Chase Your Dreams for Texas A&amp;M’s Virtual Production Institute with Academy Award-nominated director Brandon Oldenburg and Limbert Fabian, as well as THAW, an interarts production. Carolyn is certified in ABT NTC Level VII, Graham Technique, PBT, PCT, Pilates, Reiki, Yoga. Recently she is al Research MODULE artist, Atelier Artist in Residence, and is an Countertechnique Teacher (2026)."]}, {"id": "d21sat", "key": "nina martin", "day": "sat", "start": "15:00", "room": "Jowers B175", "who": "Nina Martin", "title": "Contact Improvisation · ReWire Movement States™", "desc": ["Nina’s class will introduce ReWire Movement States™ as a fresh investigation into CI that does not assume we know what CI is.", "We will be guided by what Steve Paxton once said to her, “People forget that there are two words in the title — Contact and Improvisation.”"], "bio": ["Nina Martin, MFA, PhD: choreographer, pedagogue, dance theorist and performer. Centered in the phenomena of perception, composition and spontaneous movement states her research springs from 40 years of embodied research and applied dance. Martin’s dance systems: Ensemble Thinking and ReWire Movement Method complement her practice in Contact Improvisation. Martin joins the Lower Left Performance Collective www.lowerleft.org, is professor of dance at TCU School of Classical &amp; Contemporary Dance and hosts dance events in Marfa, Texas."]}, {"id": "e21sat", "key": "dalsimer", "day": "sat", "start": "15:00", "room": "Jowers 170", "who": "Hallie Dalsimer", "title": "Tools for Play: Interested is Interesting", "desc": ["There is a wonderful quote from Doris Humphrey that offers a vital lesson for improvisers: \"Don't just do something, stand there.\" When we unhook from the idea that we are need to be constantly doing/moving — and release the pressure to make what we are doing interesting (or good) — a whole world of possibility opens up for us. This class will offer practices and strategies for reorienting our attention deeper into our internal felt sense of the present moment, while simultaneously inviting us to widen our awareness to include how we are co-creating the evolving relationships within a shared space."], "bio": ["Hallie Dalsimer is an embodied systems artist working across movement, sound, and collective practice. (Th)eir practice is rooted in the belief that inhabiting our bodies in real time is a deeply radical and permissionary act, one that we can model for each other as an invitation to both inhabit our own lives more fully and to re-member ourselves as part of a larger collective body. Hallie has been dancing for over 35 years and teaching and performing a wide variety of improvisational practices regularly since 2010. E hails from Santa Fe, NM."]}, {"id": "f21sat", "key": "hoelscher", "day": "sat", "start": "15:00", "room": "Gym 219", "who": "Evelyn Joy Hoelscher", "title": "Partner &amp; Play", "desc": ["Partner &amp; Play is an exploratory workshop designed for artists to move, connect, and experiment. We approach partnering through the lens of play—offering prompts, games, and technical concepts to build your toolbelt and expand how you sense and support another body. Starting with guided connection and sensory awareness, we explore structured contact improv and dynamic partnering concepts. With a focus on body mechanics and efficient lifting, dancers learn to partner with ease—not force. Leave feeling stronger, more connected, and ready to fly."], "bio": ["Evelyn Joy Hoelscher is an Austin-based choreographer, performer, and educator, and has served for over a decade as Artistic Director of Spaces of Fontana, a contemporary dance collaboration she founded in NYC and now leads in Austin. Her work bridges structured choreography and improvisational partnering practices rooted in trust, play, and embodied storytelling. She has taught as a guest artist at Texas A&amp;M, TDIF, and 254 DanceFest, and regularly leads workshops for the Austin community. With a background in dance kinesiology and over 1,000 classes in yoga and Pilates, her approach integrates somatics, relational movement, and improvisation as tools for connection."]}, {"id": "g21sat", "key": "weiss bambara", "day": "sat", "start": "15:00", "room": "Gym 221", "who": "Celia Weiss Bambara", "title": "Eco-Somatic Scores for Water and the Moon", "desc": ["This workshop will draw upon eco-somatic scores that have arisen through practice-based research and dance making with the CCBdance Project and through a current work about the moon’s cycles. Beginning with a floor-based meditation and combination of yoga and Klien Mahler practices the work will begin focusing on alignment, breath, and floor-oriented movement to sink into the body and find our edges. Participants will engage two sets of scores for drifting, pooling, and waxing and waning. The body-based work will adapt somatic practices embedded in score(s) that engage mindfulness, slowness, working with water in the body, and locating cyclical movements.<span class="Apple-converted-space">  </span>The workshop period will culminate in a group river score that incorporates these practices within and through listening to the ensemble of participants."], "bio": ["Dr. Celia Weiss Bambara is an accomplished dancer, choreographer and scholar as well as a dual citizen of the US and Burkina Faso. She is the artistic director of the CCBdance Project, which was co-founded with Burkina Faso born dance and theater artist, Christian Bambara in 2006. Her choreography, improvisation, site-dance work, and screen dance has been shown in the United States, Asia, The Middle East, Canada, the Caribbean, West Africa, and in Europe. Celia’s most recent work is published in the Journal of Dance and Somatics Practices and The Routledge Companion to Site-Specific Performance. Celia is the Head of Dance at the University of Wisconsin, Whitewater and an Assistant Professor of the program."]}], "extras": {"welcome and opening circle": {"desc": ["Welcoming and logistical information"]}, "jam": {"desc": ["Open dance space with musicians. Keep social talking to a minimum; the focus is on dancing or witnessing."]}, "quiet jam": {"desc": ["Open dance space without musicians. Keep social talking to a minimum; the focus is on dancing or witnessing."]}, "jam and closing circle": {"desc": ["Open dance space with musicians. Keep social talking to a minimum; the focus is on dancing or witnessing."]}, "tech in harrison theatre": {"link": "https://maps.app.goo.gl/NMsibq6N5aWN9jM3A"}, "performance": {"desc": ["Performance in the lobby starts at 6:40 pm."], "link": "https://maps.app.goo.gl/NMsibq6N5aWN9jM3A"}}, "agreements": ["I agree to consistently take responsibility for myself about how, when and if I choose to interact with others. I will reach out to the Response Team if I need support or help.", "I agree to contribute to a culture of consent by using full body listening and paying attention to the multiple ways that someone can signal yes or no.", "I agree to refrain from moving the sensual practice of CI toward the sexual during classes or jams at the festival.", "I agree to exercise awareness about how identity, background, and experience level can create complex dynamics that affect people’s ability to proactively indicate or verbally say “no” to interactions. Therefore, I will strive to ascertain through someone’s words or body language if they want to dance with me or not and respond accordingly.<span class="Apple-converted-space">  </span>I will not assume that people want to be touched or do contact in any specific way just because they showed up for this event.", "I agree to not engage in discriminatory behaviors towards others including: violence, sexual harassment or assault, offensive comments or behavior related to sex, gender identity and expression, sexual orientation, disability, mental illness, physical appearance, body size, age, race, religion, nationality, lifestyle choices and practices, including those related to food, health, parenting, drugs, and employment.", "I agree to engage respectfully if a concern is raised about my behavior, to address my behavior, if necessary, with the Response Team, which may include, the request to leave the immediate space or the entire event if the Team determines that my continued presence poses a risk to the safe enjoyment of the festival for other participants."]};</span></p>
+<p class="p1"><span class="s1">const SNAPSHOT = "TDIF 2026 Schedule,,,,,,,\" Hover over boxes to see more info\n*This schedule is subject to change and slight modifications<span class="Apple-converted-space">      </span>\",,,\nTHURSDAY,JOWERS Lobby,JOW B178,JOW B175,JOW 170,GYM 219,GYM 221,,,,\n5:30 pm - 7:00 pm,Registration 5:30-8:00pm,,,,,,,,,\n7:00 pm - 7:30 pm,,Welcome and Opening Circle,,,,,,,,\n7:30 pm - 10:00 pm,,JAM,Quiet JAM,,,,,,,\n,,,,,,,,,,\nFRIDAY,JOWERS Lobby,JOW B178,JOW B175,JOW 170,GYM 219,GYM 221,Outside/Site Specific meet at registration lobby,,,\n,Registration 8:30-10:00am,,,,,,,,,\n9:00 am - 10:45 am,,Wells,Dewitt,Lass,Cartwright,Ellis,,,,\n11:15 am - 1:00pm,,Barnard,Fuchs,Lima/Mockli,NO CLASS,Lain,,,,\n1:00 pm - 3:00 pm,Registration 2:00-3:00 pm,Break,,,,,,,,\n3:00 pm - 4:45 pm,,Wells,Smith,Martin,Sharma,,\"Gamborino (Outside), meet at registration table\",,,\n6:00 pm - 8:00 pm,Registration 7:30-8:30 pm <span class="Apple-converted-space">  </span>,Break,,,,,,,,\n7:30 pm - 10:00 pm,,JAM,Quiet JAM,,,,,,,\n,,,,,,,,,,\nSATURDAY,JOWERS Lobby,JOW B178,JOW B175,JOW 170,GYM 219,GYM 221,,Performing Arts Center,,\n,Registration 8:30-10:00am,,,,,,,,,\n9:00 am - 10:45 am,,Morning Jam,,Wells Rehearsal (not a class),,,,,,\n11:15 am - 1:00 pm,,Wells,Bascom,Big Rig Dance Collective,Davis/Totzke,Dodini,,,,\n1:00 pm - 3:00 pm,Registration 2:00-3:00 pm <span class="Apple-converted-space">    </span>(Advisory Committee Lunch 1-3pm),Break,,,,,,TECH in Harrison Theatre,,\n3:00 pm - 4:45 pm,,Rabbers,Nina Martin,Dalsimer,Hoelscher,Weiss Bambara,,,,\n4:45 pm - 7:00 pm, <span class="Apple-converted-space">                                              </span>Break,,,,,,,,,\n7:00 pm - 8:30 pm,\"PERFORMANCE AT PERFORMING ARTS CENTER, Harrison Theatre - Performance in Lobby starts at 6:40\",,,,,,,,,\n8:30 pm - 10:30 pm,,JAM and Closing Circle,Quiet JAM,,,,,,,\n";</span></p>
+<p class="p1"><span class="s1">let DATA = { sessions: [], agreements: BAKED.agreements };</span></p>
+<p class="p1"><span class="s1">let sync = { mode: "snapshot", at: null, error: false };</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function parseCSV(text) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const rows = []; let row = [], f = "", q = false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (let i = 0; i &lt; text.length; i++) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const c = text[i];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (q) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else q = false; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>else f += c;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>} else if (c === '"') q = true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>else if (c === ",") { row.push(f); f = ""; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>else if (c === "\n" || c === "\r") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if (c === "\r" &amp;&amp; text[i + 1] === "\n") i++;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>row.push(f); rows.push(row); row = []; f = "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>} else f += c;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (f || row.length) { row.push(f); rows.push(row); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return rows;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function norm(t) { return String(t || "").toLowerCase().split("(")[0].replace(/\s+/g, " ").trim(); }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function to24(h, m, ap) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>h = +h; m = +(m || 0);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (ap === "pm" &amp;&amp; h &lt; 12) h += 12;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (ap === "am" &amp;&amp; h === 12) h = 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0");</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">// Finds "9:00 am - 10:45 am", "5:30-8:00pm", "11:15 am - 1:00pm" etc.</span></p>
+<p class="p1"><span class="s1">function parseRange(text) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const m = String(text || "").toLowerCase().match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)?\s*[-–]\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)/);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (!m) return null;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const endAp = m[6];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let startAp = m[3] || endAp;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const end = to24(m[4], m[5], endAp);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let start = to24(m[1], m[2], startAp);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (!m[3] &amp;&amp; start &gt; end) start = to24(m[1], m[2], endAp === "pm" ? "am" : "pm");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return { start, end };</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function roomName(h) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>h = String(h || "").trim();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (/^outside/i.test(h)) return "Outside · meet at registration lobby";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return h.replace(/^JOWERS\b/i, "Jowers").replace(/^JOW\b/i, "Jowers").replace(/^GYM\b/i, "Gym");</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">const DAYWORDS = { thursday: "thu", friday: "fri", saturday: "sat" };</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function classify(text) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const t = text.toLowerCase();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (t === "no class") return null;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (t.startsWith("registration")) return "logistics";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (t === "break") return "break";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (t.includes("jam")) return "jam";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (t.startsWith("welcome")) return "circle";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (t.startsWith("performance")) return "performance";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (t.includes("rehearsal") || t.startsWith("tech")) return "logistics";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return "class";</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function lookupClass(label, day, start, room) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const k = norm(label);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const all = BAKED.classes.filter(c =&gt; c.key === k);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return all.find(c =&gt; c.day === day &amp;&amp; c.start === start)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>|| all.find(c =&gt; c.day === day &amp;&amp; c.room === room)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>|| (all.filter(c =&gt; c.day === day).length === 1 ? all.find(c =&gt; c.day === day) : null)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>|| (all.length === 1 ? all[0] : null);</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function buildSessions(rows) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const out = []; let day = null, rooms = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (const r of rows) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const a = (r[0] || "").trim();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const dw = DAYWORDS[a.toLowerCase()];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (dw) { day = dw; rooms = r.map(roomName); continue; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (!day) continue;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const rowTime = parseRange(a);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>for (let c = 1; c &lt; r.length; c++) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const raw = (r[c] || "").replace(/\s+/g, " ").trim();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if (!raw) continue;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const kind = classify(raw);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if (!kind) continue;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const time = (kind === "logistics" &amp;&amp; parseRange(raw)) || rowTime || parseRange(raw);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if (!time) continue;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>let room = rooms[c] || "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const s = { day, start: time.start, end: time.end, kind, room, label: raw, desc: [] };</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if (kind === "class") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const b = lookupClass(raw, day, time.start, room);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>s.who = b ? b.who : raw.split("(")[0].trim();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>s.title = b ? b.title : null;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>s.desc = b ? b.desc : [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>s.bio = b ? b.bio : [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>s.id = b ? "c-" + b.id : "c-" + day + "-" + norm(raw).replace(/\W+/g, "") + "-" + time.start;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const short = raw.match(/^registration/i) ? "Registration"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>: kind === "performance" ? "Performance"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>: raw.replace(/\b\w+/g, w =&gt; w.length &gt; 3 &amp;&amp; w === w.toUpperCase() ? w[0] + w.slice(1).toLowerCase() : w).replace(/\bJAM\b/g, "Jam");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>s.title = short;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (kind === "logistics" &amp;&amp; /^registration/i.test(raw)) room = s.room = rooms[c] || "Jowers Lobby";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (kind === "performance") s.room = "Harrison Theatre, Performing Arts Center";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (kind === "break") s.room = "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const extra = BAKED.extras[norm(raw)] || BAKED.extras[kind];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (extra) { if (extra.desc) s.desc = extra.desc; if (extra.link) s.link = extra.link; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (raw.toLowerCase() !== short.toLowerCase() &amp;&amp; !(extra &amp;&amp; extra.desc)) s.desc = [raw];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>s.id = kind + "-" + day + "-" + time.start + "-" + norm(short).replace(/\W+/g, "") + "-" + c;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>out.push(s);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return out;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function applyCSV(text) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const sessions = buildSessions(parseCSV(text));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (sessions.filter(s =&gt; s.kind === "class").length &lt; 5) throw new Error("Sheet layout not recognized");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>DATA = { sessions, agreements: BAKED.agreements };</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">async function refresh() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (const url of SOURCES) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const res = await fetch(url, { cache: "no-store" });</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if (!res.ok) continue;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const text = await res.text();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if (!/thursday/i.test(text)) continue;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>applyCSV(text);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>sync = { mode: "live", at: new Date(), error: false };</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>store.set("tdif26-cache", { text, at: sync.at.toISOString() });</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>render();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>} catch (e) { /* try next source */ }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>sync.error = true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>render();</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function ago(t) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const m = Math.round((new Date() - t) / 6e4);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (m &lt; 1) return "just now";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (m &lt; 60) return m + " min ago";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const h = Math.round(m / 60);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return h &lt; 24 ? h + " hr ago" : Math.round(h / 24) + " d ago";</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function syncLabel() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (sync.mode === "live") return (sync.error ? "offline · updated " : "updated ") + ago(sync.at);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (sync.mode === "cache") return (sync.error ? "offline · updated " : "updating… · ") + ago(sync.at);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return sync.error ? "offline copy" : "updating…";</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">const DAYS = { thu: { label: "Thursday", date: [2026, 9, 15] }, fri: { label: "Friday", date: [2026, 9, 16] }, sat: { label: "Saturday", date: [2026, 9, 17] } };</span></p>
+<p class="p1"><span class="s1">const ORDER = ["thu", "fri", "sat"];</span></p>
+<p class="p1"><span class="s1">const STAR_ICON = '&lt;svg viewBox="0 0 24 24" aria-hidden="true"&gt;&lt;path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/&gt;&lt;/svg&gt;';</span></p>
+<p class="p1"><span class="s1">const STAR_OFF = '&lt;svg viewBox="0 0 24 24" aria-hidden="true"&gt;&lt;path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/&gt;&lt;/svg&gt;';</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">const CHECK_ICON = '&lt;svg viewBox="0 0 24 24" aria-hidden="true"&gt;&lt;circle cx="12" cy="12" r="9.5" fill="currentColor"/&gt;&lt;path d="M7.5 12.3l3 3 6-6.3" fill="none" stroke="var(--surface)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/&gt;&lt;/svg&gt;';</span></p>
+<p class="p1"><span class="s1">const store = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }</span></p>
+<p class="p1"><span class="s1">};</span></p>
+<p class="p1"><span class="s1">let marks = new Map(Object.entries(store.get("tdif26-marks", {})).map(([k, v]) =&gt; [k, +v]));</span></p>
+<p class="p1"><span class="s1">// Shared crew state</span></p>
+<p class="p1"><span class="s1">let share = "connecting"; <span class="Apple-converted-space">      </span>// connecting | on | readonly | off</span></p>
+<p class="p1"><span class="s1">let db = null, myId = null;</span></p>
+<p class="p1"><span class="s1">let myName = store.get("tdif26-name", "");</span></p>
+<p class="p1"><span class="s1">let crew = {};<span class="Apple-converted-space">                  </span>// userId -&gt; { name, marks }</span></p>
+<p class="p1"><span class="s1">let editingName = false;</span></p>
+<p class="p1"><span class="s1">let gotFirstSnap = false;</span></p>
+<p class="p1"><span class="s1">let openIds = new Set();</span></p>
+<p class="p1"><span class="s1">let day = null;</span></p>
+<p class="p1"><span class="s1">let query = "";</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function at(d, hhmm) { const [y, m, dd] = DAYS[d].date; const [h, mi] = hhmm.split(":").map(Number); return new Date(y, m, dd, h, mi); }</span></p>
+<p class="p1"><span class="s1">function fmt(hhmm) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let [h, m] = hhmm.split(":").map(Number); const ap = h &gt;= 12 ? "pm" : "am"; h = h % 12 || 12;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return m ? `${h}:${String(m).padStart(2, "0")}` + ap : `${h}` + ap;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function range(s) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const a = fmt(s.start), b = fmt(s.end);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const same = a.slice(-2) === b.slice(-2);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return (same ? a.slice(0, -2) : a) + "–" + b;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function esc(t) { return String(t).replace(/[&amp;&lt;&gt;"]/g, c =&gt; ({ "&amp;": "&amp;amp;", "&lt;": "&amp;lt;", "&gt;": "&amp;gt;", '"': "&amp;quot;" })[c]); }</span></p>
+<p class="p1"><span class="s1">function status(s, now) { const a = at(s.day, s.start), b = at(s.day, s.end); return now &gt;= b ? "done" : now &gt;= a ? "now" : "soon"; }</span></p>
+<p class="p1"><span class="s1">function matches(s) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (!query) return true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const hay = [s.who, s.title, s.label, s.room, ...(s.desc || []), ...(s.bio || [])].join(" ").toLowerCase();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return query.toLowerCase().split(/\s+/).every(w =&gt; hay.includes(w));</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function groupSlots(list) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const map = new Map();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (const s of list) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const k = s.day + s.start + s.end;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (!map.has(k)) map.set(k, { day: s.day, start: s.start, end: s.end, items: [] });</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>map.get(k).items.push(s);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const rank = { class: 0, performance: 0, circle: 1, jam: 2, break: 3, logistics: 4 };</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return [...map.values()]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.sort((a, b) =&gt; ORDER.indexOf(a.day) - ORDER.indexOf(b.day) || a.start.localeCompare(b.start) || a.end.localeCompare(b.end))</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.map(g =&gt; (g.items.sort((x, y) =&gt; rank[x.kind] - rank[y.kind]), g));</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function cardHTML(s) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const isClass = s.kind === "class";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const hasMore = (s.desc &amp;&amp; s.desc.length) || (s.bio &amp;&amp; s.bio.length) || s.link || s.kind === "jam";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const open = openIds.has(s.id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const quiet = s.kind === "break" || s.kind === "logistics";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const tag = isClass ? "Class" : s.kind === "jam" ? "Jam" : s.kind === "performance" ? "Show" : "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let head = isClass</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>? `&lt;span class="who"&gt;${esc(s.who)}&lt;/span&gt;&lt;span class="ctitle"&gt;${esc(s.title || "Class description not posted yet")}&lt;/span&gt;`</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>: `&lt;span class="ctitle"&gt;${esc(s.title)}&lt;/span&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const where = `&lt;span class="where"&gt;${tag ? `&lt;span class="tag"&gt;${tag}&lt;/span&gt;` : ""}${s.room ? esc(s.room) : ""}${query ? ` · ${DAYS[s.day].label.slice(0, 3)} ${range(s)}` : ""}&lt;/span&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const more = hasMore &amp;&amp; !open ? `&lt;span class="more"&gt;${isClass ? "Read description" : "Details"}&lt;/span&gt;` : "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let detail = "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (open &amp;&amp; hasMore) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>detail = `&lt;div class="detail" id="d-${s.id}"&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>for (const p of s.desc || []) detail += `&lt;p&gt;${esc(p)}&lt;/p&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (s.bio &amp;&amp; s.bio.length) { detail += `&lt;h4&gt;About the teacher${s.who.includes("&amp;") || s.who.includes("Collective") ? "s" : ""}&lt;/h4&gt;`; for (const p of s.bio) detail += `&lt;p class="bio"&gt;${esc(p)}&lt;/p&gt;`; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (s.kind === "jam") detail += `&lt;button class="linkbtn" data-agree&gt;Read the community agreements&lt;/button&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (s.link) detail += `&lt;a href="${esc(s.link)}" target="_blank" rel="noopener"&gt;Map to Harrison Theatre ↗&lt;/a&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>detail += `&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const m = marks.get(s.id) || 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const markBtn = isClass || s.kind === "performance" || s.kind === "jam"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>? `&lt;button class="markbtn" data-mark-id="${s.id}" data-mark="${m}" aria-label="${["Mark as interested", "Interested. Tap to mark as going", "Going. Tap to clear"][m]}"&gt;${[STAR_OFF, STAR_ICON, CHECK_ICON][m]}&lt;small&gt;${["Mark", "Maybe", "Going"][m]}&lt;/small&gt;&lt;/button&gt;` : "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const crewLine = crewHTML(s.id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return `&lt;article class="card kind-${s.kind}${quiet ? " quiet" : ""}"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button class="opener" data-open="${s.id}" ${hasMore ? `aria-expanded="${open}"` : "disabled"}&gt;${head}${where}${more}&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>${markBtn}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;${crewLine}${detail}&lt;/article&gt;`;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function whoMarked(id) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const go = [], maybe = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const mine = marks.get(id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (mine === 2) go.push("You"); else if (mine === 1) maybe.push("You");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (const [uid, p] of Object.entries(crew)) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (uid === myId) continue;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const v = p.marks &amp;&amp; p.marks[id];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (v === 2) go.push(p.name); else if (v === 1) maybe.push(p.name);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return { go, maybe };</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function crewHTML(id) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const { go, maybe } = whoMarked(id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const others = go.concat(maybe).filter(n =&gt; n !== "You");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (!others.length) return "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return `&lt;div class="crew"&gt;${go.length ? `&lt;span class="go"&gt;&lt;b&gt;Going&lt;/b&gt;${go.map(esc).join(", ")}&lt;/span&gt;` : ""}${maybe.length ? `&lt;span class="maybe"&gt;&lt;b&gt;Interested&lt;/b&gt;${maybe.map(esc).join(", ")}&lt;/span&gt;` : ""}&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function othersCount() { return Object.keys(crew).filter(uid =&gt; uid !== myId).length; }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function meBarHTML() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if ((share === "on" || share === "connecting" || share === "off") &amp;&amp; (!myName || editingName)) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>return `&lt;div class="namecard"&gt;&lt;p class="big"&gt;${myName ? "Change your name" : "Who are you?"}&lt;/p&gt;&lt;p&gt;Your crew sees this name next to the classes you mark.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;form id="nameform"&gt;&lt;input id="nameinput" maxlength="24" autocomplete="nickname" placeholder="First name" value="${esc(myName)}" aria-label="Your name"&gt;&lt;button class="save" type="submit"&gt;Save&lt;/button&gt;&lt;/form&gt;&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (share === "on") return `&lt;div class="mebar"&gt;&lt;span&gt;Marking as &lt;b&gt;${esc(myName)}&lt;/b&gt;&lt;/span&gt;&lt;button data-rename&gt;Change name&lt;/button&gt;&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (share === "readonly") return `&lt;div class="note"&gt;&lt;p&gt;Crew sharing isn't set up yet. Your marks are saved on this phone.&lt;/p&gt;&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (share === "off") return `&lt;div class="note"&gt;&lt;p&gt;Can't reach the crew list right now. Your marks are saved on this phone and will sync when you're back online.&lt;/p&gt;&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return "";</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function crewViewHTML(now) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let html = "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const people = Object.entries(crew).filter(([uid]) =&gt; uid !== myId);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (share === "connecting") return `&lt;p class="empty"&gt;Loading the crew…&lt;/p&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (share === "readonly") return `&lt;p class="empty"&gt;Crew sharing isn't set up yet.&lt;/p&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>html += `&lt;div class="legend"&gt;&lt;span class="l1"&gt;${STAR_ICON} Interested&lt;/span&gt;&lt;span class="l2"&gt;${CHECK_ICON} Going&lt;/span&gt;&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (people.length) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html += `&lt;div class="roster"&gt;${people.sort((a, b) =&gt; a[1].name.localeCompare(b[1].name)).map(([, p]) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const vals = Object.values(p.marks || {});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>return `&lt;span&gt;${esc(p.name)} &lt;small&gt;${vals.filter(v =&gt; v === 2).length} going · ${vals.filter(v =&gt; v === 1).length} maybe&lt;/small&gt;&lt;/span&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}).join("")}&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const ids = new Set([...marks.keys()]);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (const [, p] of people) for (const k of Object.keys(p.marks || {})) ids.add(k);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const list = DATA.sessions.filter(s =&gt; ids.has(s.id));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (!people.length) html += `&lt;p class="empty"&gt;No one else has marked anything yet.&lt;br&gt;Share this page with your friends so their picks show up here.&lt;/p&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (const d of ORDER) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const day = list.filter(s =&gt; s.day === d);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (!day.length) continue;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html += `&lt;section class="slot"&gt;&lt;div class="slot-head"&gt;&lt;h2 class="slot-time"&gt;${DAYS[d].label}&lt;/h2&gt;&lt;/div&gt;&lt;div class="list"&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>for (const g of groupSlots(day)) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const st = status(g, now);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>html += `&lt;div class="slot"&gt;&lt;div class="slot-head"&gt;&lt;span class="slot-meta"&gt;${range(g)}&lt;/span&gt;${st === "now" ? `&lt;span class="pill now"&gt;Now&lt;/span&gt;` : st === "done" ? `&lt;span class="pill done"&gt;Done&lt;/span&gt;` : ""}&lt;/div&gt;${g.items.map(cardHTML).join("")}&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html += `&lt;/div&gt;&lt;/section&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return html;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function slotHTML(g, now, showDay) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const st = status(g, now);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const n = g.items.filter(i =&gt; i.kind === "class").length;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return `&lt;section class="slot"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="slot-head"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;h2 class="slot-time"&gt;${showDay ? DAYS[g.day].label + " · " : ""}${range(g)}&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>${n &gt; 1 ? `&lt;span class="slot-meta"&gt;${n} classes&lt;/span&gt;` : ""}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>${st === "now" ? `&lt;span class="pill now"&gt;Now&lt;/span&gt;` : st === "done" ? `&lt;span class="pill done"&gt;Done&lt;/span&gt;` : ""}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="list"&gt;${g.items.map(cardHTML).join("")}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/section&gt;`;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function agreementsHTML() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return `&lt;details class="agree" id="agreements"&gt;&lt;summary&gt;Community agreements for jams and classes&lt;/summary&gt;&lt;ol&gt;${DATA.agreements.map(a =&gt; `&lt;li&gt;${esc(a.replace(/^I agree to /, "I agree to "))}&lt;/li&gt;`).join("")}&lt;/ol&gt;&lt;/details&gt;`;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function nowCardHTML(now) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const first = at("thu", "17:30"), last = at("sat", "22:30");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (now &lt; first) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const days = Math.ceil((new Date(2026, 9, 15) - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 864e5);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>return `&lt;div class="nowcard"&gt;&lt;span class="eyebrow"&gt;Coming up&lt;/span&gt;&lt;p class="big"&gt;Registration opens Thursday at 5:30pm${days === 1 ? " — tomorrow" : days &gt; 1 ? ` — in ${days} days` : ""}.&lt;/p&gt;&lt;p&gt;Tap the star on a class once for Interested, twice for Going. Your crew sees your marks.&lt;/p&gt;&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (now &gt; last) return "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const all = DATA.sessions.filter(s =&gt; s.kind !== "logistics");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const live = all.filter(s =&gt; status(s, now) === "now" &amp;&amp; s.kind !== "break");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const upcoming = all.filter(s =&gt; at(s.day, s.start) &gt; now &amp;&amp; s.kind !== "break").sort((a, b) =&gt; at(a.day, a.start) - at(b.day, b.start));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const nextStart = upcoming[0];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const next = nextStart ? upcoming.filter(s =&gt; s.day === nextStart.day &amp;&amp; s.start === nextStart.start) : [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const pickNext = next.filter(s =&gt; marks.has(s.id));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let html = `&lt;div class="nowcard"&gt;&lt;span class="eyebrow"&gt;Right now&lt;/span&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>html += live.length ? `&lt;p class="big"&gt;${live.map(s =&gt; esc(s.kind === "class" ? s.who : s.title)).join(" · ")}&lt;/p&gt;` : `&lt;p class="big"&gt;Break&lt;/p&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (nextStart) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const mins = Math.round((at(nextStart.day, nextStart.start) - now) / 6e4);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const when = mins &lt; 90 ? `in ${mins} min` : `${DAYS[nextStart.day].label} ${fmt(nextStart.start)}`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html += `&lt;p&gt;&lt;b&gt;Next, ${when}:&lt;/b&gt; ${pickNext.length ? "★ " + pickNext.map(s =&gt; esc((s.who || s.title) + " in " + s.room)).join(", ") : next.length + (next.length === 1 ? " session" : " sessions") + " — " + next.map(s =&gt; esc(s.who || s.title)).join(", ")}&lt;/p&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return html + `&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function render() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const now = new Date();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const sl = document.getElementById("syncline");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const n = othersCount();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>sl.textContent = share === "on" ? (n ? `crew live · ${n} ${n === 1 ? "friend" : "friends"}` : "crew live") : share === "connecting" ? "connecting…" : share === "readonly" ? "this phone only" : "offline";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>sl.classList.toggle("is-live", share === "on");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const view = document.getElementById("view");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>document.querySelectorAll(".tab").forEach(t =&gt; t.setAttribute("aria-selected", String(!query &amp;&amp; t.dataset.day === day)));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>document.getElementById("pickcount").textContent = marks.size + " marked";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>document.getElementById("crewcount").textContent = share === "on" || (share === "off" &amp;&amp; gotFirstSnap) ? (n + 1) + " people" : "—";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let html = meBarHTML();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (query) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const hits = DATA.sessions.filter(s =&gt; s.kind !== "break" &amp;&amp; s.kind !== "logistics" &amp;&amp; matches(s));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html += hits.length</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>? `&lt;div class="list"&gt;${hits.map(cardHTML).join("")}&lt;/div&gt;`</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>: `&lt;p class="empty"&gt;Nothing matches “${esc(query)}”.&lt;/p&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>} else if (day === "crew") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html += crewViewHTML(now);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>} else if (day === "picks") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html += nowCardHTML(now);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const picks = DATA.sessions.filter(s =&gt; marks.has(s.id));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (!picks.length) html += `&lt;p class="empty"&gt;Tap the star on a class once for Interested, twice for Going.&lt;br&gt;Your weekend shows up here, with time clashes flagged.&lt;/p&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>for (const d of ORDER) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const mine = picks.filter(s =&gt; s.day === d);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if (!mine.length) continue;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const slots = groupSlots(mine);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>html += `&lt;section class="slot"&gt;&lt;div class="slot-head"&gt;&lt;h2 class="slot-time"&gt;${DAYS[d].label}&lt;/h2&gt;&lt;/div&gt;&lt;div class="list"&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>for (const g of slots) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const clash = g.items.length &gt; 1 ? `&lt;span class="conflict"&gt;${g.items.length} picks at ${range(g)}. Choose one.&lt;/span&gt;` : "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>html += `&lt;div class="slot"&gt;&lt;div class="slot-head"&gt;&lt;span class="slot-meta"&gt;${range(g)}&lt;/span&gt;${clash}&lt;/div&gt;${g.items.map(cardHTML).join("")}&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>html += `&lt;/div&gt;&lt;/section&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html += nowCardHTML(now);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const slots = groupSlots(DATA.sessions.filter(s =&gt; s.day === day));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html += slots.map(g =&gt; slotHTML(g, now, false)).join("");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html += agreementsHTML();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>html += `&lt;p class="foot"&gt;Unofficial attendee guide with crew planning. Schedule from the TDIF 2026 sheet as of Oct 15; times are subject to change.&lt;/p&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const ni = document.getElementById("nameinput");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const draft = ni ? ni.value : null, hadFocus = ni &amp;&amp; document.activeElement === ni;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>view.innerHTML = html;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const ni2 = document.getElementById("nameinput");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (ni2 &amp;&amp; draft !== null) { ni2.value = draft; if (hadFocus) ni2.focus(); }</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">function defaultDay() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const now = new Date();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>for (const d of ORDER) { const [y, m, dd] = DAYS[d].date; if (now.getFullYear() === y &amp;&amp; now.getMonth() === m &amp;&amp; now.getDate() === dd) return d; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return "thu";</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">document.querySelector(".tabs").addEventListener("click", e =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const t = e.target.closest(".tab"); if (!t) return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>day = t.dataset.day; query = ""; document.getElementById("q").value = "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>store.set("tdif26-day", day); render(); window.scrollTo({ top: 0 });</span></p>
+<p class="p1"><span class="s1">});</span></p>
+<p class="p1"><span class="s1">document.getElementById("view").addEventListener("submit", e =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (e.target.id !== "nameform") return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>e.preventDefault();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const v = document.getElementById("nameinput").value.trim().slice(0, 24);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (!v) return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>myName = v; editingName = false; store.set("tdif26-name", myName); saveMine(); render();</span></p>
+<p class="p1"><span class="s1">});</span></p>
+<p class="p1"><span class="s1">document.getElementById("q").addEventListener("input", e =&gt; { query = e.target.value.trim(); render(); });</span></p>
+<p class="p1"><span class="s1">document.getElementById("view").addEventListener("click", e =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const mb = e.target.closest("[data-mark-id]");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (mb) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const id = mb.dataset.markId; const next = ((marks.get(id) || 0) + 1) % 3;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>next ? marks.set(id, next) : marks.delete(id);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>saveMine(); render(); return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (e.target.closest("[data-rename]")) { editingName = true; render(); const i = document.getElementById("nameinput"); if (i) i.focus(); return; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (e.target.closest("[data-agree]")) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const d = document.getElementById("agreements");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (d) { d.open = true; d.scrollIntoView({ behavior: "smooth", block: "start" }); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>else { day = "thu"; query = ""; render(); const a = document.getElementById("agreements"); a.open = true; a.scrollIntoView({ block: "start" }); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const op = e.target.closest("[data-open]");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (op &amp;&amp; !op.disabled) { const id = op.dataset.open; openIds.has(id) ? openIds.delete(id) : openIds.add(id); render(); }</span></p>
+<p class="p1"><span class="s1">});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">// ---- Crew sharing (Google Sheet via Apps Script) ------------------------</span></p>
+<p class="p1"><span class="s1">// Paste your Apps Script web app URL here (ends in /exec):</span></p>
+<p class="p1"><span class="s1">const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLHBwiKCSIKQrgRRisMu9UuTLZMZR4lDkHQXfWWh-LWd5rngLbGNdHZdHIQUpGv0AV/exec";</span></p>
+<p class="p1"><span class="s1">myId = store.get("tdif26-id", "");</span></p>
+<p class="p1"><span class="s1">if (!myId) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>myId = Array.from(crypto.getRandomValues(new Uint8Array(12)), b =&gt; b.toString(16).padStart(2, "0")).join("");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>store.set("tdif26-id", myId);</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">const sheetReady = /^https:\/\/script\.google\.com\/.+\/exec$/.test(SCRIPT_URL);</span></p>
+<p class="p1"><span class="s1">let writing = false, pending = false, saveTimer = null, dirty = false;</span></p>
+<p class="p1"><span class="s1">function saveMine() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>store.set("tdif26-marks", Object.fromEntries(marks));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (!sheetReady || !myName) return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>dirty = true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>crew[myId] = { name: myName, marks: Object.fromEntries(marks) };</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>clearTimeout(saveTimer);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>saveTimer = setTimeout(flush, 600);</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">async function flush() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (writing) { pending = true; return; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>writing = true; dirty = false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const res = await fetch(SCRIPT_URL, {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>method: "POST",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>headers: { "Content-Type": "text/plain;charset=utf-8" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>body: JSON.stringify({ id: myId, name: myName, marks: Object.fromEntries(marks) })</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (!res.ok) throw new Error(res.status);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>} catch (e) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>dirty = true; share = "off"; render();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>writing = false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (pending) { pending = false; flush(); }</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function cleanMarks(obj) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const out = {};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (obj &amp;&amp; typeof obj === "object") for (const [k, v] of Object.entries(obj)) if (v === 1 || v === 2) out[String(k)] = v;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>return out;</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">async function pull() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (!sheetReady) return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const res = await fetch(SCRIPT_URL + "?t=" + Date.now(), { cache: "no-store" });</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const j = await res.json();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const next = {};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>for (const [id, p] of Object.entries((j &amp;&amp; j.people) || {})) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>next[id] = { name: String((p &amp;&amp; p.name) || "Friend").slice(0, 24), marks: cleanMarks(p &amp;&amp; p.marks) };</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (myName) next[myId] = { name: myName, marks: Object.fromEntries(marks) };</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>crew = next;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const wasOff = share !== "on";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>share = "on"; gotFirstSnap = true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (dirty || (wasOff &amp;&amp; myName &amp;&amp; marks.size)) flush();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>render();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>} catch (e) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>share = "off"; render();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p1"><span class="s1">function connectCrew() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (!sheetReady) { share = "readonly"; render(); return; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>pull();</span></p>
+<p class="p1"><span class="s1">}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">(function initData() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const c = store.get("tdif26-cache", null);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>if (c &amp;&amp; c.text) { try { applyCSV(c.text); sync = { mode: "cache", at: new Date(c.at), error: false }; return; } catch (e) {} }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>applyCSV(SNAPSHOT);</span></p>
+<p class="p1"><span class="s1">})();</span></p>
+<p class="p1"><span class="s1">day = defaultDay();</span></p>
+<p class="p1"><span class="s1">const saved = store.get("tdif26-day", null);</span></p>
+<p class="p1"><span class="s1">const now0 = new Date();</span></p>
+<p class="p1"><span class="s1">if (saved &amp;&amp; (now0 &lt; at("thu", "00:00") || saved === "picks")) day = saved;</span></p>
+<p class="p1"><span class="s1">render();</span></p>
+<p class="p1"><span class="s1">refresh();</span></p>
+<p class="p1"><span class="s1">connectCrew();</span></p>
+<p class="p1"><span class="s1">setInterval(() =&gt; { if (!document.hidden) render(); }, 60000);</span></p>
+<p class="p1"><span class="s1">setInterval(() =&gt; { if (!document.hidden) refresh(); }, 5 * 60000);</span></p>
+<p class="p1"><span class="s1">document.addEventListener("visibilitychange", () =&gt; { if (!document.hidden) { refresh(); pull(); } });</span></p>
+<p class="p1"><span class="s1">setInterval(() =&gt; { if (!document.hidden) pull(); }, 20000);</span></p>
+<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
